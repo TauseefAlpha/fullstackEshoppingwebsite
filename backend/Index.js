@@ -18,7 +18,16 @@ const app = express()
 mongoodb()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })); //using the urlencoded middleware in a Node.js application built with the Express framework. The urlencoded middleware is used to parse incoming request bodies that are encoded in URL-encoded format.
-app.use(cors(["http://localhost:3000"]))
+// app.use(cors(["http://localhost:3000"]))
+
+app.use(cors({
+    origin: ["https://deploy-mern-1whq.vercel.app"],
+    methods: ["POST", "GET", "PUT", 'DELETE'],
+    credentials:true
+
+}))
+
+
 
 //api base url for setting productdata and stactic admin and user to mongo 
 app.use("/fst/prod", prodrouter)
