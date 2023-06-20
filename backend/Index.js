@@ -23,11 +23,13 @@ app.use(express.urlencoded({ extended: true })); //using the urlencoded middlewa
 app.use(cors({
     origin: ["https://deploy-mern-1whq.vercel.app"],
     methods: ["POST", "GET", "PUT", 'DELETE'],
-    credentials:true
+    credentials: true
 
 }))
 
-
+res.send("/", (req, res) => {
+    res.json("hello")
+})
 
 //api base url for setting productdata and stactic admin and user to mongo 
 app.use("/fst/prod", prodrouter)
